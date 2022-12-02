@@ -21,3 +21,30 @@ const capitalize = (string) => {
   let lowerCase = string.toLowerCase();
   return lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1);
 };
+
+// playRound(playerSelection, computerSelection) will take user's input and the random choice of computer to compare and decide who wins the round.
+
+const playRound = (playerSelection, computerSelection) => {
+  if (
+    capitalize(playerSelection) === "Scissors" &&
+    computerSelection === "Rock"
+  ) {
+    return "You Lose! Rock beats Scissors";
+  } else if (
+    capitalize(playerSelection) === "Paper" &&
+    computerSelection === "Scissors"
+  ) {
+    return "You Lose! Scissors beats Paper";
+  } else if (
+    capitalize(playerSelection) === "Rock" &&
+    computerSelection === "Paper"
+  ) {
+    return "You Lose! Paper beats Rock";
+  } else if (capitalize(playerSelection) === computerSelection) {
+    return "Draw!";
+  } else {
+    return `You Win! ${capitalize(
+      playerSelection
+    )} beats ${computerSelection}. CONGRATULATIONS!`;
+  }
+};
