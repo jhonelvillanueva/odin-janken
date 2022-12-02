@@ -42,12 +42,6 @@ const playRound = (playerSelection, computerSelection) => {
     return "You Lose! Paper beats Rock";
   } else if (capitalize(playerSelection) === computerSelection) {
     return "Draw!";
-  } else if (
-    capitalize(playerSelection) !== "Rock" ||
-    capitalize(playerSelection) !== "Paper" ||
-    capitalize(playerSelection) !== "Scissors"
-  ) {
-    return "You Lose! Invalid choice";
   } else {
     return `You Win! ${capitalize(
       playerSelection
@@ -55,14 +49,35 @@ const playRound = (playerSelection, computerSelection) => {
   }
 };
 
-// game() will make 5 rounds of rock-paper-scissors
+// game() will make 5 rounds of rock-paper-scissors. tallyScore(playerScore, computerScore) will compute the total score and display the winner
+
+const tallyScore = (playerScore, computerScore) => {
+  if (playerScore > computerScore) {
+    return `Your Score: ${playerScore} \n Computer Score: ${computerScore} \n YOU WIN!`;
+  } else if (playerScore < computerScore) {
+    return `Your Score: ${playerScore} \n Computer Score: ${computerScore} \n YOU LOSE!`;
+  } else {
+    return `Your Score: ${playerScore} \n Computer Score: ${computerScore} \n DRAW!`;
+  }
+};
 
 const game = () => {
+  let playerScore = 0;
+  let computerScore = 0;
+
   for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("What's your play? Rock, Paper, Scissors?");
+    let result = playRound(playerSelection, getComputerChoice());
+    console.log(result);
 
-    console.log(playRound(playerSelection, getComputerChoice()));
+    if (result.includes("Win")) {
+      playerScore++;
+    } else if (result.includes("Lose")) {
+      computerScore++;
+    }
   }
+
+  console.log(tallyScore(playerScore, computerScore));
 };
 
 game();
