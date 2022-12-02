@@ -48,3 +48,15 @@ const playRound = (playerSelection, computerSelection) => {
     )} beats ${computerSelection}. CONGRATULATIONS!`;
   }
 };
+
+// game() will make 5 rounds of rock-paper-scissors
+
+const game = () => {
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("What's your play? Rock, Paper, Scissors?");
+
+    console.log(playRound(playerSelection, getComputerChoice()));
+  }
+};
+
+game();
