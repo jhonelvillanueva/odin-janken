@@ -42,6 +42,12 @@ const playRound = (playerSelection, computerSelection) => {
     return "You Lose! Paper beats Rock";
   } else if (capitalize(playerSelection) === computerSelection) {
     return "Draw!";
+  } else if (
+    capitalize(playerSelection) !== "Rock" ||
+    capitalize(playerSelection) !== "Paper" ||
+    capitalize(playerSelection) !== "Scissors"
+  ) {
+    return "You Lose! Invalid choice";
   } else {
     return `You Win! ${capitalize(
       playerSelection
