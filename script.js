@@ -1,3 +1,18 @@
+const playerChoice = document.querySelector('#player-choice');
+const computerChoice = document.querySelector('#computer-choice');
+
+const buttons = document.querySelectorAll('.btn-play');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    let comp = getComputerChoice();
+
+    playerChoice.textContent = btn.value;
+    computerChoice.textContent = comp;
+
+    game(btn.value, comp);
+  });
+});
+
 // getComputerChoice() will generate random choice of computer
 
 const getComputerChoice = () => {
@@ -15,37 +30,19 @@ const getComputerChoice = () => {
   }
 };
 
-// capitalize(string) will format user's choice to capital first letter only
-
-const capitalize = (string) => {
-  let lowerCase = string.toLowerCase();
-  return lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1);
-};
-
 // playRound(playerSelection, computerSelection) will take user's input and the random choice of computer to compare and decide who wins the round.
 
 const playRound = (playerSelection, computerSelection) => {
-  if (
-    capitalize(playerSelection) === 'Scissors' &&
-    computerSelection === 'Rock'
-  ) {
+  if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
     return 'You Lose! Rock beats Scissors';
-  } else if (
-    capitalize(playerSelection) === 'Paper' &&
-    computerSelection === 'Scissors'
-  ) {
+  } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
     return 'You Lose! Scissors beats Paper';
-  } else if (
-    capitalize(playerSelection) === 'Rock' &&
-    computerSelection === 'Paper'
-  ) {
+  } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
     return 'You Lose! Paper beats Rock';
-  } else if (capitalize(playerSelection) === computerSelection) {
+  } else if (playerSelection === computerSelection) {
     return 'Draw!';
   } else {
-    return `You Win! ${capitalize(
-      playerSelection
-    )} beats ${computerSelection}. CONGRATULATIONS!`;
+    return `You Win! ${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
   }
 };
 
@@ -61,35 +58,9 @@ const tallyScore = (playerScore, computerScore) => {
   }
 };
 
-// const game = () => {
-//   let playerScore = 0;
-//   let computerScore = 0;
+const game = (player, computer) => {
+  let result = playRound(player, computer);
 
-//   for (let i = 0; i < 5; i++) {
-//     let playerSelection = prompt("What's your play? Rock, Paper, Scissors?");
-//     let result = playRound(playerSelection, getComputerChoice());
-//     console.log(result);
-
-//     if (result.includes('Win')) {
-//       playerScore++;
-//     } else if (result.includes('Lose')) {
-//       computerScore++;
-//     }
-//   }
-
-//   console.log(tallyScore(playerScore, computerScore));
-// };
-
-const playerChoice = document.querySelector('#player-choice');
-const computerChoice = document.querySelector('#computer-choice');
-
-const buttons = document.querySelectorAll('.btn-play');
-buttons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    let comp = getComputerChoice();
-    playRound(btn.value, comp);
-    playerChoice.textContent = btn.value;
-    computerChoice.textContent = comp;
-    console.log(btn.value + ' vs ' + comp);
-  });
-});
+  console.log(player + ' vs ' + computer);
+  console.log(result);
+};
