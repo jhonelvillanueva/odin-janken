@@ -61,23 +61,21 @@ const tallyScore = (playerScore, computerScore) => {
   }
 };
 
-const game = () => {
-  let playerScore = 0;
-  let computerScore = 0;
+// const game = () => {
+//   let playerScore = 0;
+//   let computerScore = 0;
 
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("What's your play? Rock, Paper, Scissors?");
-    let result = playRound(playerSelection, getComputerChoice());
-    console.log(result);
+//   for (let i = 0; i < 5; i++) {
+//     let playerSelection = prompt("What's your play? Rock, Paper, Scissors?");
+//     let result = playRound(playerSelection, getComputerChoice());
+//     console.log(result);
 
-    if (result.includes('Win')) {
-      playerScore++;
-    } else if (result.includes('Lose')) {
-      computerScore++;
-    }
-  }
+//     if (result.includes('Win')) {
+//       playerScore++;
+//     } else if (result.includes('Lose')) {
+//       computerScore++;
+//     }
+//   }
 
-  console.log(tallyScore(playerScore, computerScore));
-};
-
-game();
+//   console.log(tallyScore(playerScore, computerScore));
+// };
