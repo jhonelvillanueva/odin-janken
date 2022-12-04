@@ -79,3 +79,17 @@ const tallyScore = (playerScore, computerScore) => {
 
 //   console.log(tallyScore(playerScore, computerScore));
 // };
+
+const playerChoice = document.querySelector('#player-choice');
+const computerChoice = document.querySelector('#computer-choice');
+
+const buttons = document.querySelectorAll('.btn-play');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    let comp = getComputerChoice();
+    playRound(btn.value, comp);
+    playerChoice.textContent = btn.value;
+    computerChoice.textContent = comp;
+    console.log(btn.value + ' vs ' + comp);
+  });
+});
