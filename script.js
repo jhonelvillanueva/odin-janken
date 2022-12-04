@@ -11,7 +11,7 @@ buttons.forEach((btn) => {
     playerChoice.textContent = btn.value;
     computerChoice.textContent = comp;
 
-    game(btn.value, comp);
+    playRound(btn.value, comp);
   });
 });
 
@@ -54,7 +54,7 @@ const playRound = (playerSelection, computerSelection) => {
   } else {
     // return `You Win! ${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
     result.textContent = 'You Win!';
-    resultDescription.textContent = `${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
+    resultDescription.textContent = `${playerSelection} beats ${computerSelection}`;
   }
 };
 
@@ -68,11 +68,4 @@ const tallyScore = (playerScore, computerScore) => {
   } else {
     return `Your Score: ${playerScore} \n Computer Score: ${computerScore} \n DRAW!`;
   }
-};
-
-const game = (player, computer) => {
-  let result = playRound(player, computer);
-
-  console.log(player + ' vs ' + computer);
-  console.log(result);
 };
