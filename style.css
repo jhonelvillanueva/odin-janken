@@ -61,6 +61,7 @@ html {
 }
 
 .choice {
+  min-width: 200px;
   text-align: center;
   border: 2px dashed rgb(216, 216, 216);
   padding: 72px 48px;
