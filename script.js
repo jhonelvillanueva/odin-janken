@@ -5,13 +5,13 @@ const getComputerChoice = () => {
 
   switch (randomChoice) {
     case 1:
-      return "Rock";
+      return 'Rock';
       break;
     case 2:
-      return "Paper";
+      return 'Paper';
       break;
     default:
-      return "Scissors";
+      return 'Scissors';
   }
 };
 
@@ -26,22 +26,22 @@ const capitalize = (string) => {
 
 const playRound = (playerSelection, computerSelection) => {
   if (
-    capitalize(playerSelection) === "Scissors" &&
-    computerSelection === "Rock"
+    capitalize(playerSelection) === 'Scissors' &&
+    computerSelection === 'Rock'
   ) {
-    return "You Lose! Rock beats Scissors";
+    return 'You Lose! Rock beats Scissors';
   } else if (
-    capitalize(playerSelection) === "Paper" &&
-    computerSelection === "Scissors"
+    capitalize(playerSelection) === 'Paper' &&
+    computerSelection === 'Scissors'
   ) {
-    return "You Lose! Scissors beats Paper";
+    return 'You Lose! Scissors beats Paper';
   } else if (
-    capitalize(playerSelection) === "Rock" &&
-    computerSelection === "Paper"
+    capitalize(playerSelection) === 'Rock' &&
+    computerSelection === 'Paper'
   ) {
-    return "You Lose! Paper beats Rock";
+    return 'You Lose! Paper beats Rock';
   } else if (capitalize(playerSelection) === computerSelection) {
-    return "Draw!";
+    return 'Draw!';
   } else {
     return `You Win! ${capitalize(
       playerSelection
@@ -70,9 +70,9 @@ const game = () => {
     let result = playRound(playerSelection, getComputerChoice());
     console.log(result);
 
-    if (result.includes("Win")) {
+    if (result.includes('Win')) {
       playerScore++;
-    } else if (result.includes("Lose")) {
+    } else if (result.includes('Lose')) {
       computerScore++;
     }
   }
