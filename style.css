@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.game {
+  min-height: 100vh;
+  background-color: rgb(12, 18, 41);
+  color: rgb(216, 216, 216);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-title {
+  padding: 48px;
+  font-size: 72px;
+  font-weight: 700;
+}
+
+.scores {
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.instructions {
+  margin-bottom: 48px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.play-game {
+  display: flex;
+  gap: 72px;
+}
+
+.play-game > p {
+  font-size: 36px;
+  font-weight: 700;
+  align-self: center;
+}
+
+.choice {
+  text-align: center;
+  border: 2px dashed rgb(216, 216, 216);
+  padding: 72px 48px;
+  margin-bottom: 72px;
+  font-size: 24px;
+}
+
+.cards {
+  min-width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  min-width: 132px;
+  padding: 10px 0;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: rgb(12, 18, 41);
+  color: rgb(216, 216, 216);
+  border: 2px solid rgb(216, 216, 216);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgb(25, 38, 83);
+}
+
+#btn-play-again {
+  margin-top: 36px;
+  min-width: 500px;
+}
