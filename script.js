@@ -1,5 +1,6 @@
 let pScore = 0;
 let cScore = 0;
+let isGameOver = false;
 
 const playerChoice = document.querySelector('#player-choice');
 const computerChoice = document.querySelector('#computer-choice');
@@ -7,21 +8,36 @@ const result = document.querySelector('.result');
 const resultDescription = document.querySelector('.result-description');
 const playerScore = document.querySelector('#player-score');
 const computerScore = document.querySelector('#computer-score');
-
+const resetButton = document.querySelector('#btn-reset');
 const buttons = document.querySelectorAll('.btn-play');
+
 buttons.forEach((btn) => {
   btn.addEventListener('click', () => {
     let comp = getComputerChoice();
+    if (isGameOver) return;
 
     playerChoice.textContent = btn.value;
     computerChoice.textContent = comp;
 
-    playRound(btn.value, comp);
-    tallyScore();
+    game(btn.value, comp);
   });
 });
 
-// getComputerChoice() will generate random choice of computer
+resetButton.addEventListener('click', () => {
+  pScore = 0;
+  cScore = 0;
+  isGameOver = false;
+
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
+  result.textContent = 'Make a choice!';
+  resultDescription.textContent = 'First to score 5 wins!';
+});
+
+const game = (playerChoice, computerChoice) => {
+  playRound(playerChoice, computerChoice);
+  tallyScore();
+};
 
 const getComputerChoice = () => {
   let randomChoice = Math.floor(Math.random() * 3 + 1);
@@ -37,8 +53,6 @@ const getComputerChoice = () => {
       return 'Scissors';
   }
 };
-
-// playRound(playerSelection, computerSelection) will take user's input and the random choice of computer to compare and decide who wins the round.
 
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
@@ -59,8 +73,6 @@ const playRound = (playerSelection, computerSelection) => {
   }
 };
 
-// game() will make 5 rounds of rock-paper-scissors. tallyScore(playerScore, computerScore) will compute the total score and display the winner
-
 const tallyScore = () => {
   if (result.textContent.includes('Win')) {
     pScore++;
@@ -71,11 +83,14 @@ const tallyScore = () => {
   playerScore.textContent = pScore;
   computerScore.textContent = cScore;
 
-  // if (pScore > cScore) {
-  //   return `Your Score: ${pScore} \n Computer Score: ${cScore} \n YOU WIN!`;
-  // } else if (pScore < cScore) {
-  //   return `Your Score: ${pScore} \n Computer Score: ${cScore} \n YOU LOSE!`;
-  // } else {
-  //   return `Your Score: ${pScore} \n Computer Score: ${Score} \n DRAW!`;
-  // }
+  if (pScore === 5 || cScore === 5) {
+    isGameOver = true;
+    if (pScore > cScore) {
+      result.textContent = 'You Win!';
+      resultDescription.textContent = 'CONGRATULATIONS!';
+    } else {
+      result.textContent = 'You Lose!';
+      resultDescription.textContent = 'TRY AGAIN!';
+    }
+  }
 };

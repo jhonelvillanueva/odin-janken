@@ -89,7 +89,7 @@ button:active {
   background-color: rgb(25, 38, 83);
 }
 
-#btn-play-again {
+#btn-reset {
   margin-top: 36px;
   min-width: 500px;
 }
