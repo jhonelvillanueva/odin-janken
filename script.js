@@ -1,5 +1,7 @@
 const playerChoice = document.querySelector('#player-choice');
 const computerChoice = document.querySelector('#computer-choice');
+const result = document.querySelector('.result');
+const resultDescription = document.querySelector('.result-description');
 
 const buttons = document.querySelectorAll('.btn-play');
 buttons.forEach((btn) => {
@@ -34,15 +36,25 @@ const getComputerChoice = () => {
 
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-    return 'You Lose! Rock beats Scissors';
+    // return 'You Lose! Rock beats Scissors';
+    result.textContent = 'You Lose!';
+    resultDescription.textContent = 'Rock beats Scissors';
   } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-    return 'You Lose! Scissors beats Paper';
+    // return 'You Lose! Scissors beats Paper';
+    result.textContent = 'You Lose!';
+    resultDescription.textContent = 'Scissors beats Paper';
   } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-    return 'You Lose! Paper beats Rock';
+    // return 'You Lose! Paper beats Rock';
+    result.textContent = 'You Lose!';
+    resultDescription.textContent = 'Paper beats Rock';
   } else if (playerSelection === computerSelection) {
-    return 'Draw!';
+    // return 'Draw!';
+    result.textContent = 'Draw!';
+    resultDescription.textContent = `${playerSelection} same with ${computerSelection}`;
   } else {
-    return `You Win! ${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
+    // return `You Win! ${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
+    result.textContent = 'You Win!';
+    resultDescription.textContent = `${playerSelection} beats ${computerSelection}. CONGRATULATIONS!`;
   }
 };
 
